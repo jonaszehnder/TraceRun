@@ -5,6 +5,12 @@ include "headerLoad.php";
 if(empty($_SESSION["username"])){
     header("Location: ../view/signin.php?warning=1");
 }
+
+if(empty($_POST["active"]) || empty($_POST["pause"])){
+    header("Location: trackrunInt.php?idTrack=".$_POST['idTrack']."&error=1");
+    exit(0);
+}
+
 ?>
 
 <html lang="en">
@@ -48,6 +54,11 @@ if(empty($_SESSION["username"])){
                 <input type="hidden" name="idTrack" value=<?php echo $_POST["idTrack"]; ?>>
                 <input class="submit-btn" type="submit" name="submit" value="Add Run">
                 </div>
+                <?php
+                if(@$_GET["error"]==1){
+                    echo "<p class='error'>Fill out Mandatory Fields</p>";
+                }
+                ?>
             </form>
         </div>
     </div>

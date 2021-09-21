@@ -43,6 +43,11 @@ if(empty($_SESSION["username"])){
                     <input type="hidden" name="idTrack" value=<?php echo $_GET["idTrack"]; ?>>
                     <input class="submit-btn" type="submit" name="submit" value="Continue">
                 </div>
+                <?php
+                if(@$_GET["error"]==1){
+                    echo "<p class='error'>Fill out Mandatory Fields</p>";
+                }
+                ?>
             </form>
         </div>
     </div>

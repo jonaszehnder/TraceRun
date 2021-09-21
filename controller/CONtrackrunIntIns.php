@@ -2,6 +2,13 @@
 session_start();
 include "../model/include.php";
 
+for($x = 1; $_POST["nbrOfInt"] >= $x; $x++){
+    if(empty($_POST["avgheartrate".$x]) || empty($_POST["cadence".$x]) || empty($_POST["distance".$x])){
+        header("Location: ../view/trackrunInt.php?idTrack=".$_POST['idTrack']."&error=1");
+    exit(0);
+    }
+}
+
 /*Insert aller Daten*/
 $stmt = $mysql->prepare("UPDATE trackrun SET int_active = (?), int_pause = (?) WHERE id = (?)");
 $stmt->bind_param("iii", $_POST["active"], $_POST["pause"], $_POST["idTrack"]);			
