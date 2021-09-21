@@ -23,9 +23,14 @@ if(!$stmt->execute()){
 	$fehler = 1;
 	echo $mysql->error . $stmt->error;
 }
+$last_id = mysqli_insert_id($mysql);
 
 @$stmt->close();
 @$mysql->close();
 
-header("Location: ../view/runs.php");
+if($_POST["type"]=="I"){
+    header("Location: ../view/trackrunInt.php?idTrack=$last_id");
+}else{
+    header("Location: ../view/runs.php");
+}
 ?>

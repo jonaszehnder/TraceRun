@@ -207,6 +207,12 @@ input:active{
     list-style-type: circle;
     margin-left: 25px;
 }
+.div-trackrun-intervall select, .div-trackrun-intervall .input-pause{
+    margin-left: 83px;
+}
+.input-active{
+    margin-left: 68px;
+}
 .runs-runningdate{
     display: inline-block;
 }
@@ -302,6 +308,10 @@ input:active{
 .input-run{
     margin-top: 40px;
     width: 100%;
+}
+.input-pause, .input-active{
+    width: 100px;
+    display: inline-block;
 }
 .run-sbmit {
     width: 350px;
