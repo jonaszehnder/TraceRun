@@ -45,24 +45,4 @@ $stmt->close();
 $mysql->close();
 
 }
-
-function GetImgHeight() {
-    $counterheight = 0;
-    include "../model/include.php";
-
-    $stmt = $mysql->prepare("SELECT id FROM trackrun WHERE fk_user=(?) ");
-
-    $stmt->bind_param("i",$_SESSION["id"]);
-    $stmt->execute();
-    $stmt->bind_result($id_trackrun);
-
-    while($stmt->fetch()){	
-        $counterheight++;
-    }
-
-    $stmt->close();
-    $mysql->close();
-
-    return $counterheight;
-}
 ?>
