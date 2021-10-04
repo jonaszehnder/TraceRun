@@ -20,15 +20,14 @@ include "headerLoad.php";
         <div class='div-home-welcome'>
         <h3>Welcome to TraceRun :D</h3>
         <?php 
-        if(@$_SESSION['username']){
-            $lastRun = GetLastRun($_SESSION['id']);
-            $timeEasyZones = GetRunStatsMethods($_SESSION['id'])[0];
-            $timeEasyZonesCalc = GetRunStatsMethods($_SESSION['id'])[1];
-            $timeEasyZonesPerc = GetRunStatsMethods($_SESSION['id'])[2];
-            $timeHardZones = GetRunStatsMethods($_SESSION['id'])[3];
-            $timeHardZonesCalc = GetRunStatsMethods($_SESSION['id'])[4];
-            $timeHardZonesPerc = GetRunStatsMethods($_SESSION['id'])[5];
-
+        if(@$_SESSION['username']){ 
+                $lastRun = @GetLastRun($_SESSION['id']);
+                $timeEasyZones = @GetRunStatsMethods($_SESSION['id'])[0];
+                $timeEasyZonesCalc = @GetRunStatsMethods($_SESSION['id'])[1];
+                $timeEasyZonesPerc = @GetRunStatsMethods($_SESSION['id'])[2];
+                $timeHardZones = @GetRunStatsMethods($_SESSION['id'])[3];
+                $timeHardZonesCalc = @GetRunStatsMethods($_SESSION['id'])[4];
+                $timeHardZonesPerc = @GetRunStatsMethods($_SESSION['id'])[5];
             echo "<p class='p-margin'>Your last Run was: $lastRun</p>";
             echo "<p class='p-margin'>Running Distribution last 7 days</p>";
 

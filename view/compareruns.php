@@ -18,8 +18,8 @@ $checkboxSearch = @array($_POST["totaltimecheck"], $_POST["distancecheck"], $_PO
 </head>
 <body>
     <?php LoadHeader(); ?>
-    <div class="background-img"></div>
-        <div class="container-run">
+    <div class="background-img">
+        <div class="container-run do-not-overflow">
             <div class="compare-user"><?php GetRunsUser($_SESSION["id"], @$_POST["search"], @$_POST["searchStartDate"], @$_POST["searchEndDate"], $checkboxSearch, $_POST["orderBySelect"]); ?></div>
         </div>
     </div>

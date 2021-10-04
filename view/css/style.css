@@ -138,6 +138,11 @@ form input{
     border-radius: 3px;
     background-color: var(--white);
 }
+div .do-not-overflow{
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 input, select{
     font-size: 22px;
     height: 40px;
@@ -206,6 +211,12 @@ input:active{
 .div-home-welcome ol li{
     list-style-type: circle;
     margin-left: 25px;
+}
+.div-trackrun-intervall select, .div-trackrun-intervall .input-pause{
+    margin-left: 83px;
+}
+.input-active{
+    margin-left: 68px;
 }
 .runs-runningdate{
     display: inline-block;
@@ -302,6 +313,10 @@ input:active{
 .input-run{
     margin-top: 40px;
     width: 100%;
+}
+.input-pause, .input-active{
+    width: 100px;
+    display: inline-block;
 }
 .run-sbmit {
     width: 350px;
