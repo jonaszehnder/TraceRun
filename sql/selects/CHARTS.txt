@@ -1,0 +1,14 @@
+# Prozentanteil von I/P läufen 
+# {{user_id}}
+
+SELECT CONCAT(100*(SELECT COUNT(*) FROM trackrun WHERE type in ("I", "P"))/COUNT(*), '%') AS "COUNT PERC I/P"  FROM trackrun WHERE fk_user = {{user_id}};
+
+
+# COUNT, aus wie vielen Intervallen ein Intervall besteht. Sotiert nach fk_trackrun
+
+SELECT fk_trackrun, COUNT(*) FROM danielfischer_tracerun.interval GROUP BY fk_trackrun;
+
+
+
+
+SELECT * FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id = il.fk_trackrun WHERE type = "I";
