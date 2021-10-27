@@ -1,0 +1,5 @@
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:29:00' AND '00:31:00';
+
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:44:00' AND '00:46:00';
+
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:59:00' AND '01:01:00';
