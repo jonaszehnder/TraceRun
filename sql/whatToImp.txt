@@ -6,19 +6,12 @@
 
 Läufe die nicht durchgeführt worden
 
-10.08 - 15.08
-E 45
 
-15.08
-Int
 
-17.08
-14 min lauf musste abgebrochen werden, sollte 30
 
-22.08 - 29.08
-E 1:30
 
-29.08
+
+29.08  - Konnte nicht
 Int
 
 05.09
@@ -28,11 +21,12 @@ E 1:30
 12.09 - 19.09
 E 1:30
 
-19.09
+19.09  - Konnte nicht
 Int
 
-19.09 - 26.09
+19.09 - 26.09 - Pause, vorbereitung für Endlauf
 E 45
+
 
 
 

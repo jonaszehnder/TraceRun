@@ -4,9 +4,11 @@
 SELECT CONCAT(100*(SELECT COUNT(*) FROM trackrun WHERE type in ("I", "P"))/COUNT(*), '%') AS "COUNT PERC I/P"  FROM trackrun WHERE fk_user = {{user_id}};
 
 
+
 # COUNT, aus wie vielen Intervallen ein Intervall besteht. Sotiert nach fk_trackrun
 
 SELECT fk_trackrun, COUNT(*) FROM danielfischer_tracerun.interval GROUP BY fk_trackrun;
+
 
 
 # Prozentanteil von I/P läufen 
@@ -15,9 +17,21 @@ SELECT fk_trackrun, COUNT(*) FROM danielfischer_tracerun.interval GROUP BY fk_tr
 SELECT CONCAT(100*(SELECT COUNT(*) FROM trackrun WHERE type in ("I", "P"))/COUNT(*), '%') AS "COUNT PERC I/P"  FROM trackrun WHERE fk_user = {{user_id}};
 
 
+
 # COUNT, aus wie vielen Intervallen ein Intervall besteht. Sotiert nach fk_trackrun
 
 SELECT fk_trackrun, COUNT(*) FROM danielfischer_tracerun.interval GROUP BY fk_trackrun;
 
 
+
+# Inner Join Interval & Trackrun
+
 SELECT * FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id = il.fk_trackrun WHERE type = "I";
+
+
+
+# Vergleich Ausdauerläufe 1. Lauf in der Woche zu 2. Lauf in der Woche
+
+
+
+# Vergleich Erster 6er Intervall zu letzter 6er Intervall
