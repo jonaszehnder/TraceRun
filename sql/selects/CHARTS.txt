@@ -14,7 +14,7 @@ SELECT fk_trackrun, COUNT(*) FROM danielfischer_tracerun.interval GROUP BY fk_tr
 # Prozentanteil von I/P läufen 
 # {{user_id}}
 
-SELECT CONCAT(100*(SELECT COUNT(*) FROM trackrun WHERE type in ("I", "P"))/COUNT(*), '%') AS "COUNT PERC I/P"  FROM trackrun WHERE fk_user = {{user_id}};
+SELECT CONCAT(100*(SELECT COUNT(*) FROM trackrun WHERE {{user_id}}9 AND type in ("I", "P"))/COUNT(*), '%') AS "COUNT PERC I/P"  FROM trackrun WHERE {{user_id}}
 
 
 
@@ -30,8 +30,36 @@ SELECT * FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id
 
 
 
-# Vergleich Ausdauerläufe 1. Lauf in der Woche zu 2. Lauf in der Woche
+# Alle Endurance Läufe nach Zeitkategorie
+
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:29:00' AND '00:31:00';
+
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:44:00' AND '00:46:00';
+
+SELECT * FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:59:00' AND '01:01:00';
+
+
+
+# Vergleich durchschnittsgeschwindigkeit 1. Lauf in der Woche zu 2. Lauf in der Woche
+
+SELECT "1. Lauf" AS "Läufe", AVG(distance*1000)/AVG(TIME_TO_SEC(total_time))*3.6 AS "KM/min" FROM trackrun WHERE type = 'E' AND DAYOFWEEK(running_date) < 4 UNION SELECT "2. Lauf", AVG(distance*1000)/AVG(TIME_TO_SEC(total_time))*3.6 FROM trackrun WHERE type = 'E' AND DAYOFWEEK(running_date) > 3
+
+
+
+# Vergleich erster Ausdauerlauf zu letzter Ausdauerlauf
+
+SELECT * FROM `trackrun` WHERE running_date = (SELECT MAX(running_date) FROM trackrun WHERE type = 'E') OR running_date = (SELECT MIN(running_date) FROM trackrun WHERE type = 'E')
 
 
 
 # Vergleich Erster 6er Intervall zu letzter 6er Intervall
+
+SELECT * FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id = il.fk_trackrun WHERE type = "I" AND running_date = (SELECT MAX(running_date) FROM trackrun WHERE type = 'I' AND fk_user = 19) OR running_date = (SELECT MIN(running_date) FROM trackrun WHERE type = 'I' AND fk_user = 19)
+
+SELECT il.id, il.fk_trackrun, il.avg_heart_rate, il.cadence, il.distance FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id = il.fk_trackrun WHERE type = "I" AND running_date = (SELECT MAX(running_date) FROM trackrun WHERE type = 'I' AND fk_user = 19) OR running_date = (SELECT MIN(running_date) FROM trackrun WHERE type = 'I' AND fk_user = 19)
+
+
+
+
+
+SELECT tn.running_date, il.id, il.fk_trackrun, tn.total_time, tn.distance, tn.avg_heart_rate, tn.max_heart_rate, il.avg_heart_rate FROM trackrun tn INNER JOIN danielfischer_tracerun.interval il ON tn.id = il.fk_trackrun WHERE type = "I" AND fk_user = 19
