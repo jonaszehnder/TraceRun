@@ -1,9 +1,7 @@
 install.packages("ggplot2")
-install.packages("dplyr")
 install.packages("patchwork")
 install.packages("hrbrthemes")
 library(ggplot2)
-library(dplyr)
 library(patchwork)
 library(hrbrthemes)
 

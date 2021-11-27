@@ -71,7 +71,7 @@ function GetRunsUser($id_userSession, $usernameTwo, $searchStartDate, $searchEnd
         list($h, $m, $s) = explode(":", $totaltime_u);
         $m += $h * 60;
         $s += $m * 60;
-        $space = $s/$distance_u;
+        @$space = $s/$distance_u;
         $mins = floor($space / 60 % 60);
         $secs = floor($space % 60);
         $avgpace_u  = sprintf('%02d:%02d', $mins, $secs);
