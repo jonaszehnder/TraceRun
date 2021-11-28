@@ -46,7 +46,7 @@ FROM trackrun
 WHERE fk_user = {{user_id}}
 
 
-# Alle Endurance Läufe nach Zeitkategorie (End_Daniel)
+# Alle Endurance Läufe nach Zeitkategorie (End_Daniel_XX)
 SELECT running_date, total_time, distance, avg_heart_rate, max_heart_rate, cadence FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:29:00' AND '00:31:00';
 SELECT running_date, total_time, distance, avg_heart_rate, max_heart_rate, cadence FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:44:00' AND '00:46:00';
 SELECT running_date, total_time, distance, avg_heart_rate, max_heart_rate, cadence FROM trackrun WHERE type = "E" AND total_time BETWEEN '00:59:00' AND '01:01:00';
@@ -57,13 +57,11 @@ SELECT "1. Lauf" AS "Läufe", AVG((TIME_TO_SEC(total_time)/60)/distance) AS "Avg
 FROM trackrun 
 WHERE type = 'E' 
 AND DAYOFWEEK(running_date) < 4 
-AND NOT comment LIKE "%Imp%" 
 UNION 
 SELECT "2. Lauf", AVG((TIME_TO_SEC(total_time)/60)/distance), AVG(avg_heart_rate), AVG(cadence) 
 FROM trackrun 
 WHERE type = 'E' 
 AND DAYOFWEEK(running_date) > 3 
-AND NOT comment LIKE "%Imp%"
 
 
 # Vergleich Pace aller Ausdauerläufe (AvgPace_End_Daniel)
@@ -85,12 +83,14 @@ AND fk_user = 19)
 
 # Vergleich Durchschnittspace aller Teilintervallen (AvgPace_Int_username)
 # {{user_id}}
-SELECT running_date, (tn.int_active*COUNT(*)/60)/(SUM(il.distance)) AS "PACE (min/km)" 
+SELECT us.username, running_date, (tn.int_active*COUNT(*)/60)/(SUM(il.distance)) AS "PACE (min/km)" 
 FROM trackrun tn 
 INNER JOIN danielfischer_tracerun.interval il 
 ON tn.id = il.fk_trackrun 
+INNER JOIN user us
+ON us.id = tn.fk_user
 WHERE type = "I" 
-AND tn.fk_user = {{user_id}} 
+AND tn.fk_user = {{user_id}}
 GROUP BY il.fk_trackrun
 
 
