@@ -7,7 +7,7 @@ $checkboxSearch = @array($_POST["totaltimecheck"], $_POST["distancecheck"], $_PO
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">,cmxc,<cm.-yxmmxn<n<,xnm<xnmynmy<ncm,nxcm
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/scrollable.css">
